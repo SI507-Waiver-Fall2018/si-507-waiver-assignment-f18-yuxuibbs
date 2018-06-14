@@ -18,18 +18,26 @@ if len(sys.argv) < 3:
     if sys.argv[1] == "customers":
         cur.execute("SELECT id, ContactName FROM Customer")
         result = cur.fetchall()
-        print("ID", "Customer Name")
+        print("ID\tCustomer Name")
         for customer in result:
-            print(customer[0], customer[1])
+            print(str(customer[0]) + '\t' + customer[1])
     elif sys.argv[1] == "employees":
         cur.execute("SELECT id, LastName, FirstName FROM Employee")
         result = cur.fetchall()
-        print("ID", "Employee Name")
+        print("ID\tEmployee Name")
         for customer in result:
-            print(customer[0], customer[2], customer[1])
+            print(str(customer[0]) + '\t' + customer[2], customer[1])
 else:
     [command, search_term] = sys.argv[2].split("=")
     if command == "cust":
-        print(search_term)
+        cur.execute("SELECT OrderDate FROM `Order` WHERE Customerid='{}'".format(search_term))
+        result = cur.fetchall()
+        print("Order Dates")
+        for date in result:
+            print(date[0])
     elif command == "emp":
-        pass
+        cur.execute("SELECT OrderDate FROM `Order` WHERE Employeeid IN (SELECT id FROM Employee WHERE LastName='{}')".format(search_term))
+        result = cur.fetchall()
+        print("Order Dates")
+        for date in result:
+            print(date[0])
