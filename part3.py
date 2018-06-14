@@ -1,5 +1,8 @@
-# these should be the only imports you need
+# Yuxuan Chen
+# yuxuanc
 
+
+# these should be the only imports you need
 import requests
 from bs4 import BeautifulSoup
 

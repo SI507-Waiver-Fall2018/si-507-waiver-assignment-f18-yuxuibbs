@@ -1,3 +1,7 @@
+# Yuxuan Chen
+# yuxuanc
+
+
 # these should be the only imports you need
 import sys
 import sqlite3
@@ -8,7 +12,7 @@ import sqlite3
 #  python3 part2.py employees
 #  python3 part2.py orders cust=<customer id>
 #  python3 part2.py orders emp=<employee last name>
-#
+
 
 
 conn = sqlite3.connect("Northwind_small.sqlite")
